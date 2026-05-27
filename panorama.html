@@ -16,200 +16,191 @@
     align-items: center;
     padding: 20px 16px;
   }
-  h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
-  .sub { font-size: 13px; color: #888; margin-bottom: 20px; }
-
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.5px; }
+  .sub { font-size: 13px; color: #666; margin-bottom: 20px; }
+ 
   #viewfinder {
-    width: 100%;
-    max-width: 420px;
+    width: 100%; max-width: 420px;
     aspect-ratio: 4/3;
-    background: #1a1a1a;
+    background: #111;
     border-radius: 16px;
     overflow: hidden;
     position: relative;
-    border: 1px solid #333;
+    border: 1px solid #222;
   }
-  #video {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+  #video { width: 100%; height: 100%; object-fit: cover; display: block; }
   #status {
-    position: absolute;
-    top: 12px; left: 50%;
+    position: absolute; top: 12px; left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.7);
-    color: #fff;
-    font-size: 13px;
-    padding: 4px 14px;
-    border-radius: 20px;
-    white-space: nowrap;
+    background: rgba(0,0,0,0.75);
+    color: #fff; font-size: 13px;
+    padding: 4px 14px; border-radius: 20px;
+    white-space: nowrap; max-width: 90%;
+    text-align: center;
   }
   #flash {
     position: absolute; inset: 0;
-    background: white;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.08s;
+    background: white; opacity: 0;
+    pointer-events: none; transition: opacity 0.08s;
   }
   #dots {
-    position: absolute;
-    bottom: 12px; left: 50%;
+    position: absolute; bottom: 12px; left: 50%;
     transform: translateX(-50%);
     display: flex; gap: 8px;
   }
   .dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.3);
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(255,255,255,0.25);
     transition: background 0.2s;
   }
   .dot.done { background: #fff; }
-  .dot.active { background: #ffcc00; }
-
+  .dot.active { background: #ffcc00; transform: scale(1.2); }
+ 
   #allow-btn {
-    margin-top: 16px;
+    margin-top: 14px;
     width: 100%; max-width: 420px;
-    padding: 16px;
-    background: #2563eb;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+    padding: 16px; background: #2563eb;
+    color: #fff; border: none;
+    border-radius: 12px; font-size: 16px;
+    font-weight: 600; cursor: pointer;
   }
   #allow-btn:active { opacity: 0.85; }
-
+ 
   .row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 14px;
+    display: flex; align-items: center;
+    gap: 12px; margin-top: 14px;
     width: 100%; max-width: 420px;
   }
   .row label { font-size: 13px; color: #888; flex-shrink: 0; }
   .row input[type=range] { flex: 1; accent-color: #fff; }
   .row span { font-size: 14px; font-weight: 600; min-width: 16px; }
-
+ 
   #capture-btn {
     margin-top: 16px;
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: #fff;
-    border: 4px solid #555;
-    font-size: 28px;
-    cursor: pointer;
+    width: 72px; height: 72px; border-radius: 50%;
+    background: #fff; border: 4px solid #444;
+    font-size: 28px; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.1s;
   }
   #capture-btn:active { transform: scale(0.92); }
-  #capture-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-
+  #capture-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+ 
   #instruction {
-    margin-top: 12px;
-    font-size: 12px;
-    color: #666;
-    text-align: center;
-    max-width: 320px;
-    line-height: 1.6;
+    margin-top: 12px; font-size: 12px;
+    color: #555; text-align: center;
+    max-width: 320px; line-height: 1.7;
   }
-
-  #thumbs {
-    display: flex; gap: 8px;
-    margin-top: 16px;
-    overflow-x: auto;
+  #instruction strong { color: #aaa; }
+ 
+  #progress-wrap {
+    display: none; margin-top: 14px;
     width: 100%; max-width: 420px;
+    height: 4px; background: #222;
+    border-radius: 4px; overflow: hidden;
+  }
+  #progress-bar {
+    height: 100%; background: #fff;
+    width: 0%; transition: width 0.3s;
+  }
+ 
+  #thumbs {
+    display: flex; gap: 8px; margin-top: 16px;
+    overflow-x: auto; width: 100%; max-width: 420px;
     padding: 4px 0;
   }
   .thumb {
-    flex-shrink: 0;
-    height: 64px;
-    border-radius: 8px;
-    border: 1px solid #333;
+    flex-shrink: 0; height: 64px;
+    border-radius: 8px; border: 1px solid #333;
   }
-
+ 
   #result-section {
-    display: none;
-    margin-top: 20px;
+    display: none; margin-top: 20px;
     width: 100%; max-width: 420px;
   }
   #result-label { font-size: 13px; color: #888; margin-bottom: 8px; }
   #result-wrap {
-    width: 100%;
-    overflow-x: auto;
-    border-radius: 10px;
-    background: #111;
+    width: 100%; overflow-x: auto;
+    border-radius: 10px; background: #111;
     border: 1px solid #333;
   }
-  #result-canvas {
-    display: block;
-    height: 120px;
-    width: auto;
-  }
+  #result-canvas { display: block; height: 140px; width: auto; }
+ 
   #save-btn {
-    margin-top: 12px;
-    width: 100%;
-    padding: 14px;
-    background: #1a1a1a;
-    color: #fff;
-    border: 1px solid #333;
-    border-radius: 12px;
-    font-size: 15px;
-    cursor: pointer;
+    margin-top: 12px; width: 100%;
+    padding: 14px; background: #1a1a1a;
+    color: #fff; border: 1px solid #333;
+    border-radius: 12px; font-size: 15px; cursor: pointer;
   }
   #save-btn:active { background: #2a2a2a; }
-
+ 
   #error-msg {
-    display: none;
-    margin-top: 12px;
-    background: #1a0000;
-    border: 1px solid #500;
-    color: #f88;
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-size: 13px;
-    line-height: 1.6;
+    display: none; margin-top: 12px;
+    background: #1a0000; border: 1px solid #500;
+    color: #f88; padding: 12px 16px;
+    border-radius: 10px; font-size: 13px;
+    line-height: 1.6; width: 100%; max-width: 420px;
+  }
+ 
+  #tip-box {
+    margin-top: 16px; padding: 12px 16px;
+    background: #111; border: 1px solid #222;
+    border-radius: 12px; font-size: 12px;
+    color: #666; line-height: 1.8;
     width: 100%; max-width: 420px;
   }
+  #tip-box strong { color: #aaa; display: block; margin-bottom: 4px; font-size: 13px; }
 </style>
 </head>
 <body>
-
+ 
 <h1>Haptic Panorama</h1>
-<p class="sub">Vibrate. Shift. Stitch.</p>
-
+<p class="sub">Vibrate → Shift → Stitch</p>
+ 
 <div id="viewfinder">
   <video id="video" autoplay playsinline muted></video>
   <div id="flash"></div>
   <div id="status">Tap "Allow Camera" below</div>
   <div id="dots"></div>
 </div>
-
+ 
 <div id="error-msg"></div>
-
+ 
 <button id="allow-btn">Allow Camera &amp; Start</button>
-
+ 
+<div id="progress-wrap"><div id="progress-bar"></div></div>
+ 
 <div class="row">
   <label>Frames</label>
-  <input type="range" id="frame-slider" min="2" max="6" value="3" step="1">
+  <input type="range" id="frame-slider" min="2" max="5" value="3" step="1">
   <span id="frame-val">3</span>
 </div>
-
+ 
+<div class="row">
+  <label>Vibration</label>
+  <input type="range" id="vib-slider" min="1" max="3" value="2" step="1">
+  <span id="vib-val">Medium</span>
+</div>
+ 
 <button id="capture-btn" disabled>📷</button>
-
-<p id="instruction">Place phone flat on a smooth desk. Tap 📷 to start — the phone vibrates between each shot to shift position, then stitches into a panorama.</p>
-
+ 
+<div id="tip-box">
+  <strong>How to get best results</strong>
+  Place phone <strong>flat on a smooth surface</strong> (glass table, tile floor) camera facing up.<br>
+  Tap 📷 — phone vibrates strongly to rotate itself slightly between each shot.<br>
+  Keep still after tapping — let the vibration do the work.
+</div>
+ 
 <div id="thumbs"></div>
-
+ 
 <div id="result-section">
-  <p id="result-label">Your panorama</p>
+  <p id="result-label">Panorama</p>
   <div id="result-wrap">
     <canvas id="result-canvas"></canvas>
   </div>
   <button id="save-btn">⬇ Save panorama</button>
 </div>
-
+ 
 <script>
 const video = document.getElementById('video');
 const allowBtn = document.getElementById('allow-btn');
@@ -219,43 +210,58 @@ const flashEl = document.getElementById('flash');
 const dotsEl = document.getElementById('dots');
 const frameSlider = document.getElementById('frame-slider');
 const frameVal = document.getElementById('frame-val');
+const vibSlider = document.getElementById('vib-slider');
+const vibVal = document.getElementById('vib-val');
 const thumbsEl = document.getElementById('thumbs');
 const resultSection = document.getElementById('result-section');
 const resultCanvas = document.getElementById('result-canvas');
 const saveBtn = document.getElementById('save-btn');
 const errorMsg = document.getElementById('error-msg');
-
-let stream = null;
+const progressWrap = document.getElementById('progress-wrap');
+const progressBar = document.getElementById('progress-bar');
+ 
 let frames = [];
 let totalFrames = 3;
+let vibLevel = 2;
 let capturing = false;
-
+ 
+const vibPatterns = {
+  1: [80, 40, 80],
+  2: [150, 60, 150, 60, 150],
+  3: [200, 50, 200, 50, 200, 50, 200]
+};
+const vibLabels = { 1: 'Soft', 2: 'Medium', 3: 'Strong' };
+ 
 function buildDots() {
   dotsEl.innerHTML = '';
   for (let i = 0; i < totalFrames; i++) {
     const d = document.createElement('div');
-    d.className = 'dot';
-    d.id = 'dot' + i;
+    d.className = 'dot'; d.id = 'dot' + i;
     dotsEl.appendChild(d);
   }
 }
 buildDots();
-
+ 
 frameSlider.addEventListener('input', () => {
   totalFrames = parseInt(frameSlider.value);
   frameVal.textContent = totalFrames;
   buildDots();
 });
-
+ 
+vibSlider.addEventListener('input', () => {
+  vibLevel = parseInt(vibSlider.value);
+  vibVal.textContent = vibLabels[vibLevel];
+});
+ 
 allowBtn.addEventListener('click', async () => {
   errorMsg.style.display = 'none';
   statusEl.textContent = 'Requesting camera…';
   try {
-    stream = await navigator.mediaDevices.getUserMedia({
+    const s = await navigator.mediaDevices.getUserMedia({
       video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 960 } },
       audio: false
     });
-    video.srcObject = stream;
+    video.srcObject = s;
     await video.play();
     statusEl.textContent = 'Camera ready ✓';
     allowBtn.style.display = 'none';
@@ -264,17 +270,14 @@ allowBtn.addEventListener('click', async () => {
     statusEl.textContent = 'Camera denied';
     errorMsg.style.display = 'block';
     errorMsg.innerHTML = '<strong>Camera access failed.</strong><br><br>'
-      + 'Try this:<br>'
-      + '1. Make sure you opened this file in <strong>Chrome</strong><br>'
-      + '2. Look for a camera icon in the address bar and tap <strong>Allow</strong><br>'
-      + '3. If on iPhone, go to Settings → Chrome → Camera → Allow<br>'
-      + '4. If on Android, go to Settings → Apps → Chrome → Permissions → Camera → Allow<br><br>'
+      + 'Go to phone Settings → Apps → Chrome → Permissions → Camera → Allow<br><br>'
+      + 'Then reload this page and try again.<br><br>'
       + 'Error: ' + err.message;
   }
 });
-
+ 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
+ 
 function snapFrame() {
   const c = document.createElement('canvas');
   c.width = video.videoWidth || 640;
@@ -282,109 +285,189 @@ function snapFrame() {
   c.getContext('2d').drawImage(video, 0, 0, c.width, c.height);
   return c;
 }
-
-function flash() {
+ 
+function doFlash() {
   flashEl.style.opacity = '0.9';
   setTimeout(() => flashEl.style.opacity = '0', 100);
 }
-
-function vibrate(pattern) {
-  if ('vibrate' in navigator) navigator.vibrate(pattern);
+ 
+function vibrate() {
+  if ('vibrate' in navigator) navigator.vibrate(vibPatterns[vibLevel]);
 }
-
+ 
 async function runCapture() {
   capturing = true;
   captureBtn.disabled = true;
   frameSlider.disabled = true;
+  vibSlider.disabled = true;
   frames = [];
   thumbsEl.innerHTML = '';
   resultSection.style.display = 'none';
+  progressWrap.style.display = 'block';
+  progressBar.style.width = '0%';
   buildDots();
-
+ 
   for (let i = 0; i < totalFrames; i++) {
     const dot = document.getElementById('dot' + i);
     if (dot) dot.classList.add('active');
-
+ 
     if (i === 0) {
       statusEl.textContent = 'Capturing shot 1…';
-      vibrate([50]);
+      vibrate();
+      await sleep(800);
     } else {
-      statusEl.textContent = 'Vibrating to shift…';
-      vibrate([100, 50, 100, 50, 150]);
-      await sleep(600);
+      statusEl.textContent = `Vibrating to shift… (${i}/${totalFrames - 1})`;
+      vibrate();
+      await sleep(900);
       statusEl.textContent = `Capturing shot ${i + 1}…`;
+      await sleep(400);
     }
-
-    await sleep(400);
-    flash();
-    const frame = snapFrame();
-    frames.push(frame);
-
+ 
+    doFlash();
+    frames.push(snapFrame());
     if (dot) { dot.classList.remove('active'); dot.classList.add('done'); }
-
+ 
     const thumb = document.createElement('canvas');
     thumb.className = 'thumb';
-    const s = 64 / frame.height;
+    const sc = 64 / frames[frames.length-1].height;
     thumb.height = 64;
-    thumb.width = Math.round(frame.width * s);
-    thumb.getContext('2d').drawImage(frame, 0, 0, thumb.width, 64);
+    thumb.width = Math.round(frames[frames.length-1].width * sc);
+    thumb.getContext('2d').drawImage(frames[frames.length-1], 0, 0, thumb.width, 64);
     thumbsEl.appendChild(thumb);
-
+ 
+    progressBar.style.width = Math.round(((i + 1) / totalFrames) * 100) + '%';
     if (i < totalFrames - 1) await sleep(300);
   }
-
-  statusEl.textContent = 'Stitching…';
-  await sleep(200);
+ 
+  statusEl.textContent = 'Stitching with blending…';
+  await sleep(100);
   stitch();
-
+ 
+  progressWrap.style.display = 'none';
   capturing = false;
   captureBtn.disabled = false;
   frameSlider.disabled = false;
+  vibSlider.disabled = false;
   statusEl.textContent = 'Done! Scroll down ↓';
 }
-
+ 
+// ── SMART STITCHER ──────────────────────────────────────────────
+// For each adjacent pair, find the best horizontal offset by
+// comparing a vertical strip of pixels using sum-of-absolute-differences.
+// Then blend the overlap zone with a linear alpha ramp.
+ 
+function findBestOffset(leftCanvas, rightCanvas) {
+  const w = leftCanvas.width;
+  const h = leftCanvas.height;
+ 
+  // Sample a centre strip of the right frame's left edge
+  // and slide it across the right edge of the left frame.
+  const stripW = Math.round(w * 0.25); // 25% overlap search range
+  const sampleH = Math.min(h, 80);     // sample 80 rows for speed
+  const rowStep = Math.max(1, Math.floor(h / sampleH));
+  const colSample = 8;                 // sample every 8 pixels across strip
+ 
+  const ctxL = leftCanvas.getContext('2d');
+  const ctxR = rightCanvas.getContext('2d');
+ 
+  // Grab right-edge strip of left frame
+  const leftStrip = ctxL.getImageData(w - stripW, 0, stripW, h);
+  // Grab left-edge strip of right frame
+  const rightStrip = ctxR.getImageData(0, 0, stripW, h);
+ 
+  let bestOffset = Math.round(w * 0.6); // default: 60% advance
+  let bestSAD = Infinity;
+ 
+  // Try different overlap amounts
+  for (let overlap = Math.round(w * 0.15); overlap < Math.round(w * 0.6); overlap += 4) {
+    let sad = 0;
+    let count = 0;
+    for (let y = 0; y < h; y += rowStep) {
+      for (let x = 0; x < stripW; x += colSample) {
+        const li = (y * stripW + x) * 4;
+        const ri = (y * stripW + x) * 4;
+        if (li + 2 < leftStrip.data.length && ri + 2 < rightStrip.data.length) {
+          sad += Math.abs(leftStrip.data[li]   - rightStrip.data[ri])
+               + Math.abs(leftStrip.data[li+1] - rightStrip.data[ri+1])
+               + Math.abs(leftStrip.data[li+2] - rightStrip.data[ri+2]);
+          count++;
+        }
+      }
+    }
+    const avgSad = count > 0 ? sad / count : Infinity;
+    if (avgSad < bestSAD) {
+      bestSAD = avgSad;
+      bestOffset = w - overlap;
+    }
+  }
+  return bestOffset;
+}
+ 
 function stitch() {
   if (!frames.length) return;
   const fw = frames[0].width;
   const fh = frames[0].height;
-  const slice = Math.round(fw * 0.65);
-  const totalW = slice * (frames.length - 1) + fw;
-
+ 
+  // Compute per-pair offsets
+  const offsets = [0];
+  for (let i = 1; i < frames.length; i++) {
+    offsets.push(offsets[i-1] + findBestOffset(frames[i-1], frames[i]));
+  }
+ 
+  const totalW = offsets[offsets.length - 1] + fw;
   resultCanvas.width = totalW;
   resultCanvas.height = fh;
   const ctx = resultCanvas.getContext('2d');
-
-  frames.forEach((f, i) => {
-    const x = i * slice;
-    ctx.save();
-    ctx.beginPath();
-    if (i < frames.length - 1) {
-      ctx.rect(x, 0, slice + fw * 0.12, fh);
-    } else {
-      ctx.rect(x, 0, fw, fh);
+  ctx.clearRect(0, 0, totalW, fh);
+ 
+  // Draw each frame with feathered blending in overlap zones
+  for (let i = 0; i < frames.length; i++) {
+    const x = offsets[i];
+    const nextX = i < frames.length - 1 ? offsets[i+1] : totalW;
+    const prevX = i > 0 ? offsets[i] : 0;
+    const overlapL = i > 0 ? (offsets[i-1] + fw) - x : 0;
+    const overlapR = i < frames.length - 1 ? (x + fw) - offsets[i+1] : 0;
+ 
+    // Draw the frame
+    ctx.drawImage(frames[i], x, 0);
+ 
+    // Feather left overlap: draw a gradient mask over the left edge
+    if (overlapL > 0 && overlapL < fw) {
+      const blendW = Math.min(overlapL, Math.round(fw * 0.15));
+      const grad = ctx.createLinearGradient(x, 0, x + blendW, 0);
+      grad.addColorStop(0, 'rgba(0,0,0,1)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = grad;
+      ctx.fillRect(x, 0, blendW, fh);
+      ctx.restore();
+      // Redraw left frame over this zone
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(x, 0, blendW, fh);
+      ctx.clip();
+      ctx.globalAlpha = 1;
+      ctx.drawImage(frames[i-1], offsets[i-1], 0);
+      ctx.restore();
     }
-    ctx.clip();
-    ctx.drawImage(f, x, 0);
-    ctx.restore();
-  });
-
-  const dh = 120;
+  }
+ 
+  const dh = 140;
   const dw = Math.round(totalW * (dh / fh));
   resultCanvas.style.height = dh + 'px';
   resultCanvas.style.width = dw + 'px';
-
+ 
   resultSection.style.display = 'block';
-  resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  setTimeout(() => resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
 }
-
-captureBtn.addEventListener('click', () => {
-  if (!capturing) runCapture();
-});
-
+ 
+captureBtn.addEventListener('click', () => { if (!capturing) runCapture(); });
+ 
 saveBtn.addEventListener('click', () => {
   const a = document.createElement('a');
   a.download = 'panorama.jpg';
-  a.href = resultCanvas.toDataURL('image/jpeg', 0.92);
+  a.href = resultCanvas.toDataURL('image/jpeg', 0.93);
   a.click();
 });
 </script>
